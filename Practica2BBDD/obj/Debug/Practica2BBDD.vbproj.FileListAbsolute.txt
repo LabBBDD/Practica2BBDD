@@ -1,1 +1,11 @@
 C:\Users\jfdez\workspace\VisualStudioProjects\Practica2BBDD\Practica2BBDD\bin\Debug\Practica2BBDD.exe.config
+C:\Users\jfdez\workspace\VisualStudioProjects\Practica2BBDD\Practica2BBDD\bin\Debug\Practica2BBDD.exe
+C:\Users\jfdez\workspace\VisualStudioProjects\Practica2BBDD\Practica2BBDD\bin\Debug\Practica2BBDD.pdb
+C:\Users\jfdez\workspace\VisualStudioProjects\Practica2BBDD\Practica2BBDD\bin\Debug\Practica2BBDD.xml
+C:\Users\jfdez\workspace\VisualStudioProjects\Practica2BBDD\Practica2BBDD\obj\Debug\Practica2BBDD.vbprojResolveAssemblyReference.cache
+C:\Users\jfdez\workspace\VisualStudioProjects\Practica2BBDD\Practica2BBDD\obj\Debug\Practica2BBDD.Form1.resources
+C:\Users\jfdez\workspace\VisualStudioProjects\Practica2BBDD\Practica2BBDD\obj\Debug\Practica2BBDD.Resources.resources
+C:\Users\jfdez\workspace\VisualStudioProjects\Practica2BBDD\Practica2BBDD\obj\Debug\Practica2BBDD.vbproj.GenerateResource.Cache
+C:\Users\jfdez\workspace\VisualStudioProjects\Practica2BBDD\Practica2BBDD\obj\Debug\Practica2BBDD.exe
+C:\Users\jfdez\workspace\VisualStudioProjects\Practica2BBDD\Practica2BBDD\obj\Debug\Practica2BBDD.xml
+C:\Users\jfdez\workspace\VisualStudioProjects\Practica2BBDD\Practica2BBDD\obj\Debug\Practica2BBDD.pdb
