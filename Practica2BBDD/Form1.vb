@@ -13,9 +13,6 @@
 
     End Sub
 
-    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Personas.Click
-
-    End Sub
 
     Private Sub Añadir_Click(sender As Object, e As EventArgs) Handles Añadir.Click
         If txtDni.Text.Equals("") Or txtNombre.Text.Equals("") Then
@@ -47,15 +44,18 @@
         End Try
     End Sub
 
-    Private Sub TextDni_TextChanged(sender As Object, e As EventArgs) Handles TextDni.TextChanged
-
-    End Sub
-
-    Private Sub TextNombre_TextChanged(sender As Object, e As EventArgs) Handles TextNombre.TextChanged
-
-    End Sub
-
     Private Sub Limpiar_Click(sender As Object, e As EventArgs) Handles Limpiar.Click
 
+    End Sub
+
+    Private Sub Eliminar_Click(sender As Object, e As EventArgs) Handles Eliminar.Click
+        Try
+            persona = New Persona(txtDNI.Text, txtNombre.Text)
+            persona.borrar()
+            MsgBox("EL REGISTRO HA SIDO ELIMINADO CON ÉXITO")
+            Form1_Load(sender, e)
+        Catch ex As Exception
+            MsgBox("FALLO AL ELIMINAR EL NUEVO REGISTRO")
+        End Try
     End Sub
 End Class
