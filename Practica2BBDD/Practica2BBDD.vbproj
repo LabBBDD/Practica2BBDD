@@ -72,8 +72,9 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.vb" />
-    <Compile Include="Class2.vb" />
+    <Compile Include="Persona.vb" />
+    <Compile Include="GestionPersonas.vb" />
+    <Compile Include="ConexionBD.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>

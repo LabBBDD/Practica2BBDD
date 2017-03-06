@@ -24,23 +24,26 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.BtnAbrirBBDD = New System.Windows.Forms.Button()
         Me.lblRuta = New System.Windows.Forms.Label()
-        Me.Limpiar = New System.Windows.Forms.Button()
-        Me.Eliminar = New System.Windows.Forms.Button()
-        Me.Modificar = New System.Windows.Forms.Button()
-        Me.Añadir = New System.Windows.Forms.Button()
+        Me.BtnLimpiar = New System.Windows.Forms.Button()
+        Me.BtnEliminar = New System.Windows.Forms.Button()
+        Me.BtnModificar = New System.Windows.Forms.Button()
+        Me.BtnAñadir = New System.Windows.Forms.Button()
         Me.TextNombre = New System.Windows.Forms.TextBox()
         Me.TextDni = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.ListBox1 = New System.Windows.Forms.ListBox()
+        Me.LblDNI = New System.Windows.Forms.Label()
+        Me.LblNombre = New System.Windows.Forms.Label()
+        Me.LBPersonas = New System.Windows.Forms.ListBox()
         Me.Personas = New System.Windows.Forms.Label()
+        Me.BtbConectar = New System.Windows.Forms.Button()
+        Me.PnlArriba = New System.Windows.Forms.Panel()
+        Me.PnlArriba.SuspendLayout()
         Me.SuspendLayout()
         '
         'BtnAbrirBBDD
         '
-        Me.BtnAbrirBBDD.Location = New System.Drawing.Point(23, 250)
+        Me.BtnAbrirBBDD.Location = New System.Drawing.Point(27, 220)
         Me.BtnAbrirBBDD.Name = "BtnAbrirBBDD"
-        Me.BtnAbrirBBDD.Size = New System.Drawing.Size(75, 23)
+        Me.BtnAbrirBBDD.Size = New System.Drawing.Size(75, 69)
         Me.BtnAbrirBBDD.TabIndex = 0
         Me.BtnAbrirBBDD.Text = "Abrir BBDD"
         Me.BtnAbrirBBDD.UseVisualStyleBackColor = True
@@ -48,132 +51,154 @@ Partial Class Form1
         'lblRuta
         '
         Me.lblRuta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblRuta.Location = New System.Drawing.Point(104, 250)
+        Me.lblRuta.Location = New System.Drawing.Point(108, 220)
         Me.lblRuta.Name = "lblRuta"
         Me.lblRuta.Size = New System.Drawing.Size(280, 69)
         Me.lblRuta.TabIndex = 1
         '
-        'Limpiar
+        'BtnLimpiar
         '
-        Me.Limpiar.Location = New System.Drawing.Point(237, 181)
-        Me.Limpiar.Name = "Limpiar"
-        Me.Limpiar.Size = New System.Drawing.Size(108, 23)
-        Me.Limpiar.TabIndex = 2
-        Me.Limpiar.Text = "Limpiar Campos"
-        Me.Limpiar.UseVisualStyleBackColor = True
+        Me.BtnLimpiar.Location = New System.Drawing.Point(185, 161)
+        Me.BtnLimpiar.Name = "BtnLimpiar"
+        Me.BtnLimpiar.Size = New System.Drawing.Size(191, 23)
+        Me.BtnLimpiar.TabIndex = 2
+        Me.BtnLimpiar.Text = "Limpiar Campos"
+        Me.BtnLimpiar.UseVisualStyleBackColor = True
         '
-        'Eliminar
+        'BtnEliminar
         '
-        Me.Eliminar.Location = New System.Drawing.Point(328, 127)
-        Me.Eliminar.Name = "Eliminar"
-        Me.Eliminar.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Eliminar.Size = New System.Drawing.Size(56, 33)
-        Me.Eliminar.TabIndex = 3
-        Me.Eliminar.Text = "Eliminar"
-        Me.Eliminar.UseVisualStyleBackColor = True
+        Me.BtnEliminar.Location = New System.Drawing.Point(320, 116)
+        Me.BtnEliminar.Name = "BtnEliminar"
+        Me.BtnEliminar.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.BtnEliminar.Size = New System.Drawing.Size(56, 33)
+        Me.BtnEliminar.TabIndex = 3
+        Me.BtnEliminar.Text = "Eliminar"
+        Me.BtnEliminar.UseVisualStyleBackColor = True
         '
-        'Modificar
+        'BtnModificar
         '
-        Me.Modificar.Location = New System.Drawing.Point(259, 127)
-        Me.Modificar.Name = "Modificar"
-        Me.Modificar.Size = New System.Drawing.Size(63, 33)
-        Me.Modificar.TabIndex = 4
-        Me.Modificar.Text = "Modificar"
-        Me.Modificar.UseVisualStyleBackColor = True
+        Me.BtnModificar.Location = New System.Drawing.Point(251, 116)
+        Me.BtnModificar.Name = "BtnModificar"
+        Me.BtnModificar.Size = New System.Drawing.Size(63, 33)
+        Me.BtnModificar.TabIndex = 4
+        Me.BtnModificar.Text = "Modificar"
+        Me.BtnModificar.UseVisualStyleBackColor = True
         '
-        'Añadir
+        'BtnAñadir
         '
-        Me.Añadir.AccessibleRole = System.Windows.Forms.AccessibleRole.None
-        Me.Añadir.Location = New System.Drawing.Point(193, 127)
-        Me.Añadir.Name = "Añadir"
-        Me.Añadir.Size = New System.Drawing.Size(57, 33)
-        Me.Añadir.TabIndex = 5
-        Me.Añadir.Text = "Añadir"
-        Me.Añadir.UseVisualStyleBackColor = True
+        Me.BtnAñadir.AccessibleRole = System.Windows.Forms.AccessibleRole.None
+        Me.BtnAñadir.Location = New System.Drawing.Point(185, 116)
+        Me.BtnAñadir.Name = "BtnAñadir"
+        Me.BtnAñadir.Size = New System.Drawing.Size(57, 33)
+        Me.BtnAñadir.TabIndex = 5
+        Me.BtnAñadir.Text = "Añadir"
+        Me.BtnAñadir.UseVisualStyleBackColor = True
         '
         'TextNombre
         '
-        Me.TextNombre.Location = New System.Drawing.Point(284, 86)
+        Me.TextNombre.Location = New System.Drawing.Point(251, 75)
         Me.TextNombre.Name = "TextNombre"
-        Me.TextNombre.Size = New System.Drawing.Size(100, 20)
+        Me.TextNombre.Size = New System.Drawing.Size(125, 20)
         Me.TextNombre.TabIndex = 6
         '
         'TextDni
         '
-        Me.TextDni.Location = New System.Drawing.Point(284, 47)
+        Me.TextDni.Location = New System.Drawing.Point(251, 39)
         Me.TextDni.Name = "TextDni"
-        Me.TextDni.Size = New System.Drawing.Size(100, 20)
+        Me.TextDni.Size = New System.Drawing.Size(125, 20)
         Me.TextDni.TabIndex = 7
         '
-        'Label1
+        'LblDNI
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(239, 50)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(26, 13)
-        Me.Label1.TabIndex = 8
-        Me.Label1.Text = "DNI"
+        Me.LblDNI.AutoSize = True
+        Me.LblDNI.Location = New System.Drawing.Point(185, 39)
+        Me.LblDNI.Name = "LblDNI"
+        Me.LblDNI.Size = New System.Drawing.Size(26, 13)
+        Me.LblDNI.TabIndex = 8
+        Me.LblDNI.Text = "DNI"
         '
-        'Label2
+        'LblNombre
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(234, 89)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(44, 13)
-        Me.Label2.TabIndex = 9
-        Me.Label2.Text = "Nombre"
+        Me.LblNombre.AutoSize = True
+        Me.LblNombre.Location = New System.Drawing.Point(185, 78)
+        Me.LblNombre.Name = "LblNombre"
+        Me.LblNombre.Size = New System.Drawing.Size(44, 13)
+        Me.LblNombre.TabIndex = 9
+        Me.LblNombre.Text = "Nombre"
         '
-        'ListBox1
+        'LBPersonas
         '
-        Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.Location = New System.Drawing.Point(34, 47)
-        Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(120, 95)
-        Me.ListBox1.TabIndex = 10
+        Me.LBPersonas.FormattingEnabled = True
+        Me.LBPersonas.Location = New System.Drawing.Point(15, 33)
+        Me.LBPersonas.Name = "LBPersonas"
+        Me.LBPersonas.Size = New System.Drawing.Size(164, 160)
+        Me.LBPersonas.TabIndex = 10
         '
         'Personas
         '
         Me.Personas.AutoSize = True
-        Me.Personas.Location = New System.Drawing.Point(31, 22)
+        Me.Personas.Location = New System.Drawing.Point(23, 11)
         Me.Personas.Name = "Personas"
         Me.Personas.Size = New System.Drawing.Size(51, 13)
         Me.Personas.TabIndex = 11
         Me.Personas.Text = "Personas"
         '
+        'BtbConectar
+        '
+        Me.BtbConectar.Location = New System.Drawing.Point(27, 304)
+        Me.BtbConectar.Name = "BtbConectar"
+        Me.BtbConectar.Size = New System.Drawing.Size(361, 50)
+        Me.BtbConectar.TabIndex = 12
+        Me.BtbConectar.Text = "Conectar con la base de datos"
+        Me.BtbConectar.UseVisualStyleBackColor = True
+        '
+        'PnlArriba
+        '
+        Me.PnlArriba.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PnlArriba.Controls.Add(Me.TextDni)
+        Me.PnlArriba.Controls.Add(Me.LBPersonas)
+        Me.PnlArriba.Controls.Add(Me.BtnLimpiar)
+        Me.PnlArriba.Controls.Add(Me.BtnEliminar)
+        Me.PnlArriba.Controls.Add(Me.Personas)
+        Me.PnlArriba.Controls.Add(Me.BtnModificar)
+        Me.PnlArriba.Controls.Add(Me.BtnAñadir)
+        Me.PnlArriba.Controls.Add(Me.LblNombre)
+        Me.PnlArriba.Controls.Add(Me.TextNombre)
+        Me.PnlArriba.Controls.Add(Me.LblDNI)
+        Me.PnlArriba.Location = New System.Drawing.Point(12, 7)
+        Me.PnlArriba.Name = "PnlArriba"
+        Me.PnlArriba.Size = New System.Drawing.Size(388, 207)
+        Me.PnlArriba.TabIndex = 13
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(408, 396)
-        Me.Controls.Add(Me.Personas)
-        Me.Controls.Add(Me.ListBox1)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.TextDni)
-        Me.Controls.Add(Me.TextNombre)
-        Me.Controls.Add(Me.Añadir)
-        Me.Controls.Add(Me.Modificar)
-        Me.Controls.Add(Me.Eliminar)
-        Me.Controls.Add(Me.Limpiar)
+        Me.ClientSize = New System.Drawing.Size(421, 371)
+        Me.Controls.Add(Me.PnlArriba)
+        Me.Controls.Add(Me.BtbConectar)
         Me.Controls.Add(Me.lblRuta)
         Me.Controls.Add(Me.BtnAbrirBBDD)
         Me.Name = "Form1"
         Me.Text = "Form1"
+        Me.PnlArriba.ResumeLayout(False)
+        Me.PnlArriba.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents BtnAbrirBBDD As Button
     Friend WithEvents lblRuta As Label
-    Friend WithEvents Limpiar As Button
-    Friend WithEvents Eliminar As Button
-    Friend WithEvents Modificar As Button
-    Friend WithEvents Añadir As Button
+    Friend WithEvents BtnLimpiar As Button
+    Friend WithEvents BtnEliminar As Button
+    Friend WithEvents BtnModificar As Button
+    Friend WithEvents BtnAñadir As Button
     Friend WithEvents TextNombre As TextBox
     Friend WithEvents TextDni As TextBox
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents ListBox1 As ListBox
+    Friend WithEvents LblDNI As Label
+    Friend WithEvents LblNombre As Label
+    Friend WithEvents LBPersonas As ListBox
     Friend WithEvents Personas As Label
+    Friend WithEvents BtbConectar As Button
+    Friend WithEvents PnlArriba As Panel
 End Class

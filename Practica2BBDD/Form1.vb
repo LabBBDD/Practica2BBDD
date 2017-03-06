@@ -1,6 +1,11 @@
 ﻿Public Class Form1
 
-    Private Sub BtnAbrirBBDD_Click(sender As Object, e As EventArgs) Handles BtnAbrirBBDD.Click, ListBox1.SelectedIndexChanged
+    Private Shared ruta
+    Private Shared conexBD
+    Private Shared personaAux
+    Private Shared gestorPersonas
+
+    Private Sub BtnAbrirBBDD_Click(sender As Object, e As EventArgs) Handles BtnAbrirBBDD.Click, LBPersonas.SelectedIndexChanged
 
         Dim ventanaAbrirBBDD As New OpenFileDialog()
         ventanaAbrirBBDD.Title = "Selecciona una base de datos"
@@ -8,54 +13,55 @@
 
         If ventanaAbrirBBDD.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
             Me.Cursor = New Cursor(ventanaAbrirBBDD.OpenFile())
-            lblRuta.Text = ventanaAbrirBBDD.FileName
+            ruta = ventanaAbrirBBDD.FileName
+            lblRuta.Text = ruta
         End If
 
     End Sub
 
 
-    Private Sub Añadir_Click(sender As Object, e As EventArgs) Handles Añadir.Click
-        If txtDni.Text.Equals("") Or txtNombre.Text.Equals("") Then
+    Private Sub Añadir_Click(sender As Object, e As EventArgs) Handles BtnAñadir.Click
+        If TextDni.Text.Equals("") Or TextNombre.Text.Equals("") Then
             MsgBox("ALGUNO DE LOS CAMPOS ESTÁ VACIO")
             Exit Sub
         End If
         Try
-            persona = New Persona(txtDNI.Text, txtNombre.Text)
-            persona.añadir()
+            personaAux = New Persona(TextDni.Text, TextNombre.Text)
             MsgBox("EL REGISTRO HA SIDO AÑADIDO CON ÉXITO")
-            Form1_Load(sender, e)
         Catch ex As Exception
             MsgBox("FALLO AL INTRODUCIR EL REGISTRO")
         End Try
     End Sub
 
-    Private Sub Modificar_Click(sender As Object, e As EventArgs) Handles Modificar.Click
-        If txtDni.Text.Equals("") Or txtNombre.Text.Equals("") Then
+    Private Sub Modificar_Click(sender As Object, e As EventArgs) Handles BtnModificar.Click
+        If TextDni.Text.Equals("") Or TextNombre.Text.Equals("") Then
             MsgBox("ALGUNO DE LOS CAMPOS ESTÁ VACIO")
             Exit Sub
         End If
         Try
-            persona = New Persona(txtDni.Text, txtNombre.Text)
-            persona.actualizar()
+            personaAux = New Persona(TextDni.Text, TextNombre.Text)
+            personaAux.actualizar()
             MsgBox("EL REGISTRO HA SIDO MODIFICADO CON ÉXITO")
-            Form1_Load(sender, e)
         Catch ex As Exception
             MsgBox("FALLO AL MODIFICAR EL NUEVO REGISTRO")
         End Try
     End Sub
 
-    Private Sub Limpiar_Click(sender As Object, e As EventArgs) Handles Limpiar.Click
-
-    End Sub
-
-    Private Sub Eliminar_Click(sender As Object, e As EventArgs) Handles Eliminar.Click
+    Private Sub Eliminar_Click(sender As Object, e As EventArgs) Handles BtnEliminar.Click
         Try
-            persona = New Persona(txtDNI.Text, txtNombre.Text)
-            persona.borrar()
+            personaAux = New Persona(TextDni.Text, TextNombre.Text)
+            personaAux.borrar()
             MsgBox("EL REGISTRO HA SIDO ELIMINADO CON ÉXITO")
-            Form1_Load(sender, e)
         Catch ex As Exception
             MsgBox("FALLO AL ELIMINAR EL NUEVO REGISTRO")
         End Try
     End Sub
+
+    Private Sub BtbConectar_Click(sender As Object, e As EventArgs) Handles BtbConectar.Click
+
+        conexBD = New ConexionBD(ruta)
+        gestorPersonas = New GestionPersonas(conexBD)
+
+    End Sub
+
 End Class
