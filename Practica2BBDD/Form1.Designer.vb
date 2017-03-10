@@ -34,7 +34,7 @@ Partial Class Form1
         Me.LblNombre = New System.Windows.Forms.Label()
         Me.LBPersonas = New System.Windows.Forms.ListBox()
         Me.Personas = New System.Windows.Forms.Label()
-        Me.BtbConectar = New System.Windows.Forms.Button()
+        Me.BtnConectar = New System.Windows.Forms.Button()
         Me.PnlArriba = New System.Windows.Forms.Panel()
         Me.PnlArriba.SuspendLayout()
         Me.SuspendLayout()
@@ -143,14 +143,15 @@ Partial Class Form1
         Me.Personas.TabIndex = 11
         Me.Personas.Text = "Personas"
         '
-        'BtbConectar
+        'BtnConectar
         '
-        Me.BtbConectar.Location = New System.Drawing.Point(27, 304)
-        Me.BtbConectar.Name = "BtbConectar"
-        Me.BtbConectar.Size = New System.Drawing.Size(361, 50)
-        Me.BtbConectar.TabIndex = 12
-        Me.BtbConectar.Text = "Conectar con la base de datos"
-        Me.BtbConectar.UseVisualStyleBackColor = True
+        Me.BtnConectar.Enabled = False
+        Me.BtnConectar.Location = New System.Drawing.Point(27, 304)
+        Me.BtnConectar.Name = "BtnConectar"
+        Me.BtnConectar.Size = New System.Drawing.Size(361, 50)
+        Me.BtnConectar.TabIndex = 12
+        Me.BtnConectar.Text = "Conectar con la base de datos"
+        Me.BtnConectar.UseVisualStyleBackColor = True
         '
         'PnlArriba
         '
@@ -165,6 +166,7 @@ Partial Class Form1
         Me.PnlArriba.Controls.Add(Me.LblNombre)
         Me.PnlArriba.Controls.Add(Me.TextNombre)
         Me.PnlArriba.Controls.Add(Me.LblDNI)
+        Me.PnlArriba.Enabled = False
         Me.PnlArriba.Location = New System.Drawing.Point(12, 7)
         Me.PnlArriba.Name = "PnlArriba"
         Me.PnlArriba.Size = New System.Drawing.Size(388, 207)
@@ -176,7 +178,7 @@ Partial Class Form1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(421, 371)
         Me.Controls.Add(Me.PnlArriba)
-        Me.Controls.Add(Me.BtbConectar)
+        Me.Controls.Add(Me.BtnConectar)
         Me.Controls.Add(Me.lblRuta)
         Me.Controls.Add(Me.BtnAbrirBBDD)
         Me.Name = "Form1"
@@ -199,6 +201,6 @@ Partial Class Form1
     Friend WithEvents LblNombre As Label
     Friend WithEvents LBPersonas As ListBox
     Friend WithEvents Personas As Label
-    Friend WithEvents BtbConectar As Button
+    Friend WithEvents BtnConectar As Button
     Friend WithEvents PnlArriba As Panel
 End Class

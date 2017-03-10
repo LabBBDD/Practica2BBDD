@@ -5,32 +5,40 @@ Public Class GestionPersonas
 
     Public Shared listaPersonas
 
-    Public Sub New(Conex As ConexionBD)
+    Public Sub New(conex As ConexionBD)
 
         listaPersonas = New List(Of Persona)
-        listaPersonas.Add()
+        listaPersonas.Add(conex.leer("peticion"))
 
     End Sub
 
-    Public Sub delete(personas As Persona)
+    Public Sub delete(indice As Integer, conex As ConexionBD)
+
+        listaPersonas.Remove(indice)
+        conex.modificar("peticion")
 
     End Sub
 
-    Public Sub update(personas As Persona)
+    Public Function update(indice As Integer, dni As String, nombre As String, conex As ConexionBD) As Persona
 
-    End Sub
+        listaPersonas.Item(indice).dni = dni
+        listaPersonas.Item(indice).nombre = nombre
+        Return listaPersonas.Item(indice)
 
-    Public Sub create(personas As Persona)
+    End Function
 
+    Public Function create(dni As String, nombre As String, conex As ConexionBD) As Persona
 
+        Dim aux As Persona
+        aux = New Persona(dni, nombre)
+        listaPersonas.Add(aux)
+        conex.modificar("peticion")
+        Return aux
 
-    End Sub
+    End Function
 
-    Public Sub readPersona(dni As String, personas As Persona)
+    Public Function getListaPers() As List(Of Persona)
+        Return listaPersonas
+    End Function
 
-    End Sub
-
-    Public Sub readAll()
-
-    End Sub
 End Class

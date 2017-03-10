@@ -11,4 +11,18 @@
 
     End Sub
 
+    Public Function comprobarEstado()
+        Return conexion.State
+    End Function
+
+    Public Function leer(ByVal sql As String) As OleDb.OleDbDataReader
+        Dim com As New OleDb.OleDbCommand(sql, conexion)
+        Return com.ExecuteReader()
+    End Function
+
+    Public Function modificar(ByVal sql As String) As Integer
+        Dim com As New OleDb.OleDbCommand(sql, conexion)
+        Return com.ExecuteNonQuery()
+    End Function
+
 End Class

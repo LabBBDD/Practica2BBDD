@@ -9,59 +9,87 @@
 
         Dim ventanaAbrirBBDD As New OpenFileDialog()
         ventanaAbrirBBDD.Title = "Selecciona una base de datos"
-        ventanaAbrirBBDD.Filter = "Archivos de base de datos|*.accbd"
+        ventanaAbrirBBDD.Filter = "Archivos de base de datos|*.accdb"
 
         If ventanaAbrirBBDD.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
-            Me.Cursor = New Cursor(ventanaAbrirBBDD.OpenFile())
+            ventanaAbrirBBDD.OpenFile()
             ruta = ventanaAbrirBBDD.FileName
             lblRuta.Text = ruta
+            BtnConectar.Enabled = True
         End If
 
     End Sub
 
+    Private Sub BtnConectar_Click(sender As Object, e As EventArgs) Handles BtnConectar.Click
+
+        Dim listaPersonas As New List(Of Persona)
+
+        Try
+            conexBD = New ConexionBD(ruta)
+            gestorPersonas = New GestionPersonas(conexBD)
+            MessageBox.Show(conexBD.comprobarEstado())
+            MsgBox("Base de datos abierta con éxito")
+            PnlArriba.Enabled = True
+        Catch ex As Exception
+            MsgBox("Fallo al conectar con la base de datos")
+        End Try
+
+        listaPersonas = gestorPersonas.getListaPersonas()
+        For Each Personita In listaPersonas
+            LBPersonas.Items.Add(Personita)
+        Next
+
+    End Sub
+
+    Public Function getConexBD() As ConexionBD
+
+        Return conexBD
+
+    End Function
 
     Private Sub Añadir_Click(sender As Object, e As EventArgs) Handles BtnAñadir.Click
         If TextDni.Text.Equals("") Or TextNombre.Text.Equals("") Then
-            MsgBox("ALGUNO DE LOS CAMPOS ESTÁ VACIO")
+            MsgBox("Por favor, rellene todos los campos")
             Exit Sub
         End If
         Try
-            personaAux = New Persona(TextDni.Text, TextNombre.Text)
-            MsgBox("EL REGISTRO HA SIDO AÑADIDO CON ÉXITO")
+            LBPersonas.Items.Add(gestorPersonas.create(TextDni.Text, TextNombre.Text, conexBD))
+            MsgBox("Se ha añadido el nuevo registro con éxito")
         Catch ex As Exception
-            MsgBox("FALLO AL INTRODUCIR EL REGISTRO")
+            MsgBox("Fallo al introducir el nuevo registro")
         End Try
     End Sub
 
     Private Sub Modificar_Click(sender As Object, e As EventArgs) Handles BtnModificar.Click
         If TextDni.Text.Equals("") Or TextNombre.Text.Equals("") Then
-            MsgBox("ALGUNO DE LOS CAMPOS ESTÁ VACIO")
+            MsgBox("Por favor, rellene todos los campos")
             Exit Sub
         End If
         Try
-            personaAux = New Persona(TextDni.Text, TextNombre.Text)
-            personaAux.actualizar()
-            MsgBox("EL REGISTRO HA SIDO MODIFICADO CON ÉXITO")
+            LBPersonas.SelectedItem = gestorPersonas.update(LBPersonas.SelectedIndices, TextDni.Text, TextNombre.Text, conexBD)
+            MsgBox("El registro ha sido modificado con éxito")
         Catch ex As Exception
-            MsgBox("FALLO AL MODIFICAR EL NUEVO REGISTRO")
+            MsgBox("Fallo al modificar el registro")
         End Try
     End Sub
 
     Private Sub Eliminar_Click(sender As Object, e As EventArgs) Handles BtnEliminar.Click
         Try
-            personaAux = New Persona(TextDni.Text, TextNombre.Text)
-            personaAux.borrar()
-            MsgBox("EL REGISTRO HA SIDO ELIMINADO CON ÉXITO")
+            gestorPersonas.delete(LBPersonas.SelectedIndices, conexBD)
+            MsgBox("El registro ha sido eliminado con éxito")
         Catch ex As Exception
-            MsgBox("FALLO AL ELIMINAR EL NUEVO REGISTRO")
+            MsgBox("Fallo al eliminar el registro")
         End Try
-    End Sub
 
-    Private Sub BtbConectar_Click(sender As Object, e As EventArgs) Handles BtbConectar.Click
-
-        conexBD = New ConexionBD(ruta)
-        gestorPersonas = New GestionPersonas(conexBD)
+        LBPersonas.Items.Remove(LBPersonas.SelectedIndex)
 
     End Sub
 
+    Private Sub BtnLimpiar_Click(sender As Object, e As EventArgs) Handles BtnLimpiar.Click
+
+        TextDni.Clear()
+        TextNombre.Clear()
+        LBPersonas.SelectedItem = Nothing
+
+    End Sub
 End Class
